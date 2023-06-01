@@ -1,2 +1,2 @@
 # STM32-OLED-SSD1322
-SSD1322 OLED driver for STM Nucleo-F072RB 
+SSD1322 OLED example for STM Nucleo-F072RB 
