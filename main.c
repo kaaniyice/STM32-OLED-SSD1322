@@ -17,11 +17,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
-#include "lcd_nhl.h"
-#include "functions.h"
-#include "SPI.h"
-
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -64,14 +59,6 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-volatile uint8_t time_state_flag = 0;
-volatile uint32_t T1 = 0;
-volatile uint32_t T2 = 0;
-volatile uint32_t Ticks = 0;
-volatile uint16_t TIM2_OVC = 0;
-
-
-
 /* USER CODE END 0 */
 
 /**
@@ -106,13 +93,9 @@ int main(void)
   MX_SPI2_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-	HAL_TIM_Base_Start(&htim3);
-	HAL_TIM_Base_Start_IT(&htim2);
-  HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
   /* USER CODE END 2 */
-	NHD12864WDY3_Init();
-	
-	ClearPixel_12864();
+NHD12864WDY3_Init();
+ClearPixel_12864();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -305,34 +288,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void delay_us (uint16_t us)
-{
-	__HAL_TIM_SET_COUNTER(&htim3,0);  // set the counter value a 0
-	while ((uint16_t)__HAL_TIM_GET_COUNTER(&htim3) < us);  // wait for the counter to reach the us input in the parameter
-}
-
- void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef* htim) //Capture Compare
-{
-    if(!time_state_flag)
-    {
-        T1 = TIM2->CCR1;
-        TIM2_OVC = 0;
-        time_state_flag = 1;
-    }
-    else if(time_state_flag)
-    {
-        T2 = TIM2->CCR1;
-			
-        Ticks = (uint32_t)(T2+(TIM2_OVC*65536)-T1);
-				TIM2_OVC = 0 ;
-        time_state_flag = 0;
-    }
-}
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
-{
-    TIM2_OVC++;
-}
-
 
 /* USER CODE END 4 */
 
