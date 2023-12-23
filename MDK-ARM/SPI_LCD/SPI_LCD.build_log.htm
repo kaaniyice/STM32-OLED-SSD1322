@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: ka ka, ka, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.6.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.1.0.0
+Dialog DLL:      TARMCM1.DLL V1.14.6.0
+ 
+<h2>Project:</h2>
+D:\KeilWorkspace\SPI_LCD\MDK-ARM\SPI_LCD.uvprojx
+Project File Date:  04/11/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'SPI_LCD'
+tdc_7201.c(39): warning: incompatible pointer types passing 'uint32_t *' (aka 'unsigned int *') to parameter of type 'uint8_t *' (aka 'unsigned char *') [-Wincompatible-pointer-types]
+  read_data |= (uint32_t)HAL_SPI_Receive(&hspi1, &read_data, sizeof(read_data), HAL_MAX_DELAY) << 16;
+                                                 ^~~~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Inc\stm32f0xx_hal_spi.h(793): note: passing argument to parameter 'pData' here
+HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                                                                    ^
+tdc_7201.c(40): warning: incompatible pointer types passing 'uint32_t *' (aka 'unsigned int *') to parameter of type 'uint8_t *' (aka 'unsigned char *') [-Wincompatible-pointer-types]
+  read_data |= (uint32_t)HAL_SPI_Receive(&hspi1, &read_data, sizeof(read_data), HAL_MAX_DELAY) << 8;
+                                                 ^~~~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Inc\stm32f0xx_hal_spi.h(793): note: passing argument to parameter 'pData' here
+HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                                                                    ^
+tdc_7201.c(41): warning: incompatible pointer types passing 'uint32_t *' (aka 'unsigned int *') to parameter of type 'uint8_t *' (aka 'unsigned char *') [-Wincompatible-pointer-types]
+  read_data |= (uint32_t)HAL_SPI_Receive(&hspi1, &read_data, sizeof(read_data), HAL_MAX_DELAY);
+                                                 ^~~~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Inc\stm32f0xx_hal_spi.h(793): note: passing argument to parameter 'pData' here
+HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                                                                    ^
+3 warnings generated.
+compiling tdc_7201.c...
+compiling functions.c...
+compiling main.c...
+compiling lcd_nhl.c...
+linking...
+Program Size: Code=12596 RO-data=1448 RW-data=12 ZI-data=2004  
+FromELF: creating hex file...
+"SPI_LCD\SPI_LCD.axf" - 0 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F0xx_DFP.2.1.1.pack
+                Keil.STM32F0xx_DFP.2.1.1
+                STMicroelectronics STM32F0 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_SPI_LCD
+  C:/Users/kaani/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/kaani/AppData/Local/Arm/Packs/Keil/STM32F0xx_DFP/2.1.1/Drivers/CMSIS/Device/ST/STM32F0xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+      Include file:  CMSIS/Core/Include/tz_context.h
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
